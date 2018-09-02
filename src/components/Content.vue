@@ -29,6 +29,9 @@
                 </div>
             </Card>
         </div>
+        <div>
+          <div id="container" style="height: 400px; padding-right: 3%"></div>
+        </div>
     </div>
 </template>
 <script>
@@ -39,6 +42,60 @@
             'SelectBar': SelectBar
         }
     }
+
+   $(document).ready(function() {
+   var title = {
+      text: '城市平均气温'
+   };
+   var subtitle = {
+      text: 'Source: runoob.com'
+   };
+   var xAxis = {
+      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+         'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+   };
+   var yAxis = {
+      title: {
+         text: 'Temperature (\xB0C)'
+      },
+      plotLines: [{
+         value: 0,
+         width: 1,
+         color: '#808080'
+      }]
+   };
+
+   var tooltip = {
+      valueSuffix: '\xB0C'
+   }
+
+   var legend = {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'middle',
+      borderWidth: 0
+   };
+
+   var series =  [
+      {
+         name: 'New York',
+         data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8,
+            24.1, 20.1, 14.1, 8.6, 2.5]
+      }
+   ];
+
+   var json = {};
+
+   json.title = title;
+   json.subtitle = subtitle;
+   json.xAxis = xAxis;
+   json.yAxis = yAxis;
+   json.tooltip = tooltip;
+   json.legend = legend;
+   json.series = series;
+
+   $('#container').highcharts(json);
+});
 </script>
 
 <style scope>
@@ -48,6 +105,8 @@
     }
     .chartcard {
         text-align: left;
+        background: white;
+        margin-right: 3%;
     }
     .card {
         display: inline-block;
